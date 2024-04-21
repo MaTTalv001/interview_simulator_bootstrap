@@ -1,6 +1,15 @@
 <!-- app/views/interview/answer.html.erb -->
-<h1><%= session[:questions][session[:current_index]] %></h1>
-<%= form_with url: process_answer_path, method: :post do |form| %>
-  <%= form.text_field :answer, placeholder: "Your answer here" %>
-  <%= form.submit "Submit" %>
-<% end %>
+<div class="container mt-5">
+  <h1 class="mb-4"><%= session[:questions][session[:current_index]] %></h1>
+
+  <%= form_with url: process_answer_path, method: :post, local: true, html: { class: 'needs-validation', novalidate: true } do |form| %>
+    <div class="mb-3">
+      <%= form.label :answer, "あなたの回答", class: 'form-label' %>
+      <%= form.text_field :answer, placeholder: "ここに回答を入力してください", class: 'form-control', required: true, aria: { describedby: "answerHelp" } %>
+      <div id="answerHelp" class="form-text">可能な環境であれば音声入力機能が便利です。</div>
+    </div>
+    <div class="actions">
+      <%= form.submit "回答を送信", class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+</div>

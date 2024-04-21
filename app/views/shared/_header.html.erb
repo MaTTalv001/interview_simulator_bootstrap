@@ -2,7 +2,7 @@
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <%= link_to root_path, class: "navbar-brand" do %>
       <%= image_tag 'undraw_Interview_re_e5jn.png', class: "d-inline-block align-top", style: "height: 40px; width: 40px;" %>
-      <span>面接シミュレータ</span>
+      <span>エンジニア面接シミュレータ</span>
     <% end %>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -10,17 +10,18 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <%= current_user.nickname %>
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <li><%= link_to '振り返り', review_questions_path, class: "dropdown-item" %></li>
-            <li><%= link_to 'Logout', logout_path, data: { turbo_method: :delete}, class: "dropdown-item" %></li>
-          </ul>
+      <ul class="navbar-nav ms-auto align-items-center">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page"><%= current_user.nickname %></a>
+        </li>
+        <li class="nav-item">
+          <%= link_to '振り返り', review_questions_path, class: 'nav-link' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Logout', logout_path ,data: { turbo_method: :delete}, class: 'nav-link' %>
         </li>
       </ul>
     </div>
   </nav>
 </header>
+

@@ -1,0 +1,23 @@
+<!-- app/views/question_responses/edit.html.erb -->
+<div class="container mt-5">
+  <h1 class="mb-3">回答の編集</h1>
+  <p class="mb-4">選択した質問に対するあなたの回答を編集できます。</p>
+  
+  <!-- 質問内容の表示 -->
+  <div class="mb-4">
+    <label class="form-label"><strong>質問:</strong></label>
+    <p class="form-control-plaintext"><%= @response.question %></p>
+  </div>
+
+  <!-- 回答の編集フォーム -->
+  <%= form_with(model: @response, url: question_response_path(@response), local: true, method: :patch, html: { class: 'needs-validation' }, novalidate: true) do |form| %>
+    <div class="mb-3">
+      <%= form.label :answer, "あなたの回答", class: 'form-label' %>
+      <%= form.text_area :answer, rows: 3, class: 'form-control' %>
+    </div>
+    <div class="actions">
+      <%= form.submit "回答を更新", class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+</div>
+
