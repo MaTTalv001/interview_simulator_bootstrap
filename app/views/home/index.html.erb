@@ -1,0 +1,7 @@
+<!-- app/views/home/index.html.erb -->
+
+<h1 class="p-10 bg-orange-600 text-xl">エンジニア面接シミュレータ</h1>
+<!-- app/views/home/index.html.erb -->
+<%= form_tag('/auth/github', method: 'post', data: {turbo: false}) do %>
+    <button type='submit' class="btn btn-secondary">Login with Developer</button>
+    <% end %>
