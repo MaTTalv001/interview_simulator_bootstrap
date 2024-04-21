@@ -3,19 +3,27 @@
   <h1 class="mb-4">モード選択</h1>
   <p>AI面接モードと一般面接モードから選択してください</p>
 
-
-
   <div class="card mb-3">
     <div class="card-body">
       <h5 class="card-title">AI面接モード</h5>
-      <p class="card-text">GitHubのリポジトリを選択して、AIにより生成された質問で面接をシミュレーションします。1日5回まで実施可能です。</p>
+      <p class="card-text">GitHubのREADMEを参照し、AIにより生成された質問で面接をシミュレーションします。1日5回まで実施可能です。</p>
       <%= form_with url: show_interview_path, method: :get, local: true, class: "form-inline" do |form| %>
         <div class="mb-3">
           <%= form.label :repository, 'あなたのGitHubリポジトリを選択してください:', class: "form-label" %>
           <%= form.select :repository, @repositories.collect { |name, url| [name, url] }, { include_blank: true }, class: "form-select" %>
         </div>
-        <%= form.submit "選択", class: "btn btn-primary" %>
+        <%= form.submit "AI面接を開始", class: "btn btn-primary" %>
       <% end %>
+
+      <!-- トグルボタンとコラプス要素 -->
+      <button class="mt-2 btn btn-light" type="button" data-bs-toggle="collapse" data-bs-target="#readmeWarning" aria-expanded="false" aria-controls="readmeWarning">
+        注意: READMEの長さについて
+      </button>
+      <div class="collapse" id="readmeWarning">
+        <div class="alert alert-warning mt-3">
+          <p>選択するGitHubリポジトリのREADMEが非常に短い場合、十分な面接問題を生成できない可能性があります。逆に、READMEが長すぎると、AIが処理可能なトークン数を超えてしまうことがあります。</p>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -23,7 +31,7 @@
     <div class="card-body">
       <h5 class="card-title">一般面接モード</h5>
       <p class="card-text">事前に設定された質問からランダムに出題されます。回数制限はありません。</p>
-      <%= link_to '汎用面接を開始', start_generic_interview_path, class: 'btn btn-primary' %>
+      <%= link_to '一般面接を開始', start_generic_interview_path, class: 'btn btn-primary' %>
     </div>
   </div>
 </div>
