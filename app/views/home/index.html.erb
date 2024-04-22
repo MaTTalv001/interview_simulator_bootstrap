@@ -1,4 +1,4 @@
-<div class="container mt-5">
+<div class="container mt-5 mb-10">
   <div class="row align-items-center justify-content-center">
     <div class="col-md-6">
       <%= image_tag 'undraw_Interview_re_e5jn.png', class: 'img-fluid' %>
@@ -19,4 +19,46 @@
     </div>
   </div>
 
-  
+  <!-- 新たに追加する説明部分 -->
+  <div class="bg-light mt-4 p-4">
+    <div class="container mt-10">
+      <h2 class="text-center text-secondary">アプリの使い方</h2>
+      <div id="instructionsCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="/assets/inst01.jpg" class="d-block w-100">
+            <div class="carousel-caption d-none d-md-block">
+              <p>このアプリには、AI面接モード、一般面接モード、振り返りモードがあります。</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="/assets/inst02.jpg" class="d-block w-100">
+            <div class="carousel-caption d-none d-md-block">
+              <p>AI面接モードでは、GithubリポジトリのREADMEをAIで解析し、オリジナルの技術面談質問を生成します。</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="/assets/inst03.jpg" class="d-block w-100">
+            <div class="carousel-caption d-none d-md-block">
+              <p>面接モードでは質問に対して回答案を登録します。</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="/assets/inst04.jpg" class="d-block w-100">
+            <div class="carousel-caption d-none d-md-block">
+              <p>面接シミュレーションの記録は後から振り返ることができ、回答案の編集も可能です。</p>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#instructionsCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#instructionsCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

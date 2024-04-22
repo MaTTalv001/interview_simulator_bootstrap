@@ -1,2 +1,26 @@
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons';
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: #000; /* アイコンの背景色を黒に設定 */
+  border-radius: 50%;     /* アイコンを円形にする */
+}
+
+.carousel-control-prev, 
+.carousel-control-next {
+  color: #000;            /* 矢印の色を黒にする */
+}
+
+.carousel-caption {
+    background-color: rgba(0, 0, 0, 0.75); /* 黒色の半透明背景 */
+    color: white;                          /* 文字色を白に */
+    padding: 1rem;                         /* 余白の追加 */
+    border-radius: 8px;                    /* 角を丸くする */
+  }
+
+.carousel img {
+    max-width: 70%;        /* 最大幅を70%に設定 */
+    margin: auto;          /* 中央寄せ */
+    display: block;        /* ブロック要素として扱う */
+}
