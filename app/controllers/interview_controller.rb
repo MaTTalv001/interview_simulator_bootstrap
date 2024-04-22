@@ -6,7 +6,7 @@ class InterviewController < ApplicationController
       current_user = User.find(session[:user_id])
       @repositories = fetch_repositories(current_user.nickname)
     else
-      redirect_to login_path, alert: "You must be logged in to access this page."
+      redirect_to login_path, alert: "ログインが必要です"
     end
   end
 

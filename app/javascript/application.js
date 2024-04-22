@@ -11,7 +11,13 @@ document.addEventListener('turbo:load', function() {
         if (select && select.value === "") {
           event.preventDefault(); // フォームの送信を停止
           alert('リポジトリを選択してください。');
+        } else {
+          // jQueryを使わずにモーダルを表示する
+          var modal = new bootstrap.Modal(document.getElementById('loadingModal'));
+          modal.show();
         }
       });
     }
   });
+  
+  
