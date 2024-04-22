@@ -1,4 +1,6 @@
 class QuestionResponsesController < ApplicationController
+    before_action :authenticate_user!
+    
     def edit
         @response = QuestionResponse.find(params[:id])
         # 権限チェックを追加して、他のユーザーの回答を編集できないようにする

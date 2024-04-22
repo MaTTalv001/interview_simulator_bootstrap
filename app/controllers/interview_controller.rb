@@ -1,12 +1,14 @@
 require 'rest-client'
 
 class InterviewController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     if session[:user_id].present?
       current_user = User.find(session[:user_id])
       @repositories = fetch_repositories(current_user.nickname)
     else
-      redirect_to login_path, alert: "ログインが必要です"
+      redirect_to root_path, alert: "ログインが必要です"
     end
   end
 
@@ -45,14 +47,14 @@ class InterviewController < ApplicationController
     else
       session.delete(:questions)
       session.delete(:current_index)
-      redirect_to interview_index_path, notice: '全ての質問に回答しました。'
+      redirect_to review_questions_path, notice: '全ての質問に回答しました。'
     end
   end
 
 
   def start_generic
     current_user = User.find(session[:user_id])
-    @questions = Question.order("RANDOM()").limit(5)
+    @questions = Question.order("RANDOM()").limit(3)
     session[:questions] = @questions.map(&:content)
     session[:current_index] = 0
 
@@ -60,6 +62,7 @@ class InterviewController < ApplicationController
   end
 
   def process_generic_answer
+    
     answer = params[:answer]
     question_content = session[:questions][session[:current_index]]
     current_user = User.find(session[:user_id])
@@ -77,7 +80,7 @@ class InterviewController < ApplicationController
     else
       session.delete(:questions)
       session.delete(:current_index)
-      redirect_to interview_index_path, notice: '全ての質問に回答しました。'
+      redirect_to review_questions_path, notice: '全ての質問に回答しました。'
     end
   end
 

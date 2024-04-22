@@ -1,7 +1,7 @@
 <header>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <%= link_to root_path, class: 'navbar-brand mx-3' do %>
-      <%= image_tag 'undraw_Interview_re_e5jn.png', style: "width: 50px; height: 50px;" %>
+      <%= image_tag 'interview_logo.png', style: "width: 50px; height: 50px;" %>
     <% end %>
     <span class="text-lg ">エンジニア面接シミュレータ</span>
 
@@ -9,9 +9,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ms-auto align-items-center">
         <li class="nav-item">
-        <%= form_tag('/auth/github', method: 'post', data: {turbo: false}) do %>
-          Githubでログイン
-          <% end %>
+        
         </li>
       </ul>
     </div>

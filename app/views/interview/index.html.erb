@@ -6,7 +6,7 @@
   <div class="card mb-3">
     <div class="card-body">
       <h5 class="card-title fw-bold">AI面接モード</h5>
-      <p class="card-text">GitHubのREADMEを参照しAIにより生成された質問で面接をシミュレーションします。1日5回まで実施可能です。</p>
+      <p class="card-text">GitHubのREADMEを参照しAIにより生成された質問(3問)で面接をシミュレーションします。1日5回まで実施可能です。</p>
       <%= form_with url: show_interview_path, method: :get, local: true, class: "form-inline ai-interview-form" do |form| %>
         <div class="mb-3">
           <%= form.label :repository, 'あなたのGitHubリポジトリを選択してください:', class: "form-label" %>
@@ -36,7 +36,7 @@
   <div class="card mb-3">
     <div class="card-body">
       <h5 class="card-title fw-bold">一般面接モード</h5>
-      <p class="card-text">事前に設定された質問からランダムに出題されます。回数制限はありません。</p>
+      <p class="card-text">事前に設定された質問からランダムに3問出題されます。回数制限はありません。</p>
       <%= link_to '一般面接を開始', start_generic_interview_path, class: 'btn btn-primary' %>
     </div>
   </div>
