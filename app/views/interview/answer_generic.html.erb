@@ -6,7 +6,11 @@
   <%= form_with url: process_generic_answer_path, method: :post, local: true, html: { class: 'needs-validation', novalidate: true } do |form| %>
     <div class="mb-3">
       <%= form.label :answer, "あなたの回答", class: 'form-label' %>
-      <%= form.text_area :answer, placeholder: "ここに回答を入力してください", class: 'form-control', required: true, aria: { describedby: "answerHelp" }, rows: 2 %>
+      <%= form.text_area :answer, id: 'answer_field', placeholder: "ここに回答を入力してください", class: 'form-control', required: true, aria: { describedby: "answerHelp" }, rows: 2 %>
+
+
+      <!-- 音声入力開始ボタン -->
+      <%= button_tag "音声で入力する", type: "button", id: "start-speech", class: "btn btn-secondary mt-3" %>
 
       <div id="answerHelp" class="form-text">可能な環境であれば音声入力機能が便利です。</div>
       <div id="answerHelp" class="form-text">空欄でも先に進むことは可能です。スキップした後は振り返りモードも活用しましょう。</div>
