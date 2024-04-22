@@ -5,14 +5,22 @@
 
   <div class="card mb-3">
     <div class="card-body">
-      <h5 class="card-title">AI面接モード</h5>
+      <h5 class="card-title fw-bold">AI面接モード</h5>
       <p class="card-text">GitHubのREADMEを参照しAIにより生成された質問で面接をシミュレーションします。1日5回まで実施可能です。</p>
       <%= form_with url: show_interview_path, method: :get, local: true, class: "form-inline ai-interview-form" do |form| %>
         <div class="mb-3">
           <%= form.label :repository, 'あなたのGitHubリポジトリを選択してください:', class: "form-label" %>
           <%= form.select :repository, @repositories.collect { |name, url| [name, url] }, { include_blank: true }, class: "form-select", id: "repository_select" %>
         </div>
-        <%= form.submit "AI面接を開始", class: "btn btn-primary" %>
+        <button type="submit" class="btn btn-primary position-relative">
+          AI面接を開始
+          <% if current_user.remaining_interviews.present? %>
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+              <%= current_user.remaining_interviews %>
+              <span class="visually-hidden">回残っています</span>
+            </span>
+          <% end %>
+        </button>
       <% end %>
       <button class="mt-2 btn btn-light" type="button" data-bs-toggle="collapse" data-bs-target="#readmeWarning" aria-expanded="false" aria-controls="readmeWarning">
         注意: READMEの長さについて
@@ -27,7 +35,7 @@
 
   <div class="card mb-3">
     <div class="card-body">
-      <h5 class="card-title">一般面接モード</h5>
+      <h5 class="card-title fw-bold">一般面接モード</h5>
       <p class="card-text">事前に設定された質問からランダムに出題されます。回数制限はありません。</p>
       <%= link_to '一般面接を開始', start_generic_interview_path, class: 'btn btn-primary' %>
     </div>
@@ -35,7 +43,7 @@
 
   <div class="card">
     <div class="card-body">
-      <h5 class="card-title">振り返り機能</h5>
+      <h5 class="card-title fw-bold">振り返りモード</h5>
       <p class="card-text">過去の面接シミュレーションを読み返し復習することができます。</p>
       <%= link_to '振り返りを開始', review_questions_path, class: 'btn btn-primary' %>
     </div>

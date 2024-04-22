@@ -11,13 +11,20 @@ class InterviewController < ApplicationController
   end
 
   def show
-    repo_url = params[:repository]
-    readme_contents = fetch_readme(repo_url)
-    @questions = OpenAiService.generate_questions(readme_contents)
-    session[:questions] = @questions  # 質問をセッションに保存
-    session[:current_index] = 0       # 現在の質問インデックスを初期化
-  
-    redirect_to answer_question_path  # 質問回答用のビューへリダイレクト
+    if session[:user_id].present?
+      current_user = User.find(session[:user_id])
+    end
+    if current_user.can_use_interview?
+      repo_url = params[:repository]
+      readme_contents = fetch_readme(repo_url)
+      @questions = OpenAiService.generate_questions(readme_contents)
+      current_user.use_interview  # カウンターをデクリメント(1減らしてDB自動保存)
+      session[:questions] = @questions  # 質問をセッションに保存
+      session[:current_index] = 0       # 現在の質問インデックスを初期化
+      redirect_to answer_question_path  # 質問回答用のビューへリダイレクト
+    else
+      redirect_to interview_index_path, alert: '本日の利用上限に到達しています'
+    end
   end
 
   def process_answer

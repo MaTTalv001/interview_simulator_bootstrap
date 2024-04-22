@@ -19,9 +19,9 @@ class QuestionResponsesController < ApplicationController
         # レスポンスの所有者が現在のユーザーであるかを確認
         if @response.user_id == session[:user_id]
             @response.destroy!
-            redirect_to review_questions_path, status: :see_other, notice: 'Response was successfully deleted.'
+            redirect_to review_questions_path, status: :see_other, notice: 'Q&Aを削除しました'
         else
-            redirect_to review_questions_path, alert: 'You do not have permission to delete this response.'
+            redirect_to review_questions_path, alert: '削除権限がありません'
         end
     end
 
