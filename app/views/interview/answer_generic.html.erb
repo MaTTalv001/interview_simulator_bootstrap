@@ -1,15 +1,17 @@
 <!-- app/views/interview/answer_generic.html.erb -->
-<div class="container mt-5">
+<div class="container-sm mt-5 mx-10"> <!-- containerをcontainer-lgに変更 -->
   <h1 class="mb-4"><%= session[:questions][session[:current_index]] %></h1>
 
   <%= form_with url: process_generic_answer_path, method: :post, local: true, html: { class: 'needs-validation', novalidate: true } do |form| %>
     <div class="mb-3">
       <%= form.label :answer, "あなたの回答", class: 'form-label' %>
-      <%= form.text_field :answer, placeholder: "ここに回答を入力してください", class: 'form-control', required: true, aria: { describedby: "answerHelp" } %>
+      <%= form.text_area :answer, placeholder: "ここに回答を入力してください", class: 'form-control', required: true, aria: { describedby: "answerHelp" }, rows: 4 %>
+
       <div id="answerHelp" class="form-text">可能な環境であれば音声入力機能が便利です。</div>
+      <div id="answerHelp" class="form-text">空欄でも先に進むことは可能です。スキップした後は振り返りモードも活用しましょう。</div>
     </div>
-    <div class="actions">
-      <%= form.submit "回答を送信", class: 'btn btn-primary' %>
+    <div class="actions pt-3">
+      <%= form.submit "回答を登録", class: 'btn btn-primary' %>
     </div>
   <% end %>
 </div>

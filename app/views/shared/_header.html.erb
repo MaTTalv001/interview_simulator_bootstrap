@@ -1,6 +1,6 @@
 <header>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <%= link_to root_path, class: "navbar-brand" do %>
+    <%= link_to root_path, class: "navbar-brand mx-3" do %>
       <%= image_tag 'undraw_Interview_re_e5jn.png', class: "d-inline-block align-top", style: "height: 40px; width: 40px;" %>
       <span>エンジニア面接シミュレータ</span>
     <% end %>
@@ -9,13 +9,13 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <div class="collapse navbar-collapse mx-3" id="navbarNavDropdown">
       <ul class="navbar-nav ms-auto align-items-center">
         <li class="nav-item">
           <a class="nav-link active" aria-current="page"><%= current_user.nickname %></a>
         </li>
         <li class="nav-item">
-          <%= link_to '振り返り', review_questions_path, class: 'nav-link' %>
+          <%= link_to 'モード選択画面', '/interview', class: 'nav-link' %>
         </li>
         <li class="nav-item">
           <%= link_to 'Logout', logout_path ,data: { turbo_method: :delete}, class: 'nav-link' %>
