@@ -10,9 +10,9 @@ module ApplicationHelper
     def bootstrap_class_for(flash_type)
         case flash_type.to_sym
         when :notice
-          "alert-info"  # または 'alert-success' など、お好みのアラートタイプ
+          "alert-info"  
         when :alert
-          "alert-warning"  # または 'alert-danger'
+          "alert-warning"  
         else
           flash_type.to_s
         end
